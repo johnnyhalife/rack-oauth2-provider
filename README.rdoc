@@ -9,7 +9,7 @@ We started implementing the SAML for SWT profile (AssertionProfile on the draft)
 anyway we will keep updating this project as we move forward implementing the standard.
 
 <b>IMPORTANT:</b> This projects works perfectly (as the server side) for the project I started back on february (github.com/johnnyhalife/rack-oauth-wrap), 
-the <i>access_token</i> provided works with that. We will be migrating that project soon (since WRAP has been deprecated)
+the <i>access\_token</i> provided is what the other project expects as <i>WRAP access\_token=</i>. We will be migrating that project soon (since WRAP has been deprecated)
 
 ==Meta
 Written by Ezequiel Morito (e_eusebio14 at hotmail dot com) and Johnny G. Halife (johnny.halife at me dot com) 
