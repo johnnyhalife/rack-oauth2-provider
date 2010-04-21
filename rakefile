@@ -1,0 +1,51 @@
+require 'rake'
+require 'rubygems'
+require 'spec/rake/spectask'
+require 'rake/gempackagetask'
+require 'rake/rdoctask'
+
+require 'lib/rack/oauth2/provider'
+
+task :default => ["run_with_rcov"]
+
+Spec::Rake::SpecTask.new('run_with_rcov') do |t|
+  t.spec_files = FileList['spec/**/*.rb'].reject{|f| f.include?('functional')}
+  t.rcov = true
+  t.rcov_opts = ['--text-report', '--exclude', "exclude.*/.gem,spec,Library,#{ENV['GEM_HOME']}", '--sort', 'coverage' ]
+  t.spec_opts = ["--colour",  "--loadby random",  "--format progress", "--backtrace"]
+end
+
+namespace :docs do
+  Rake::RDocTask.new do |t|
+  	t.rdoc_dir = 'sdk/public/'
+  	t.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
+  	t.options << '--charset' << 'utf-8'
+  	t.rdoc_files.include('README.rdoc')
+  	t.rdoc_files.include('lib/**/*.rb')
+  end
+end
+
+
+namespace :dist do  
+  spec = Gem::Specification.new do |s|
+    s.name              = 'rack-oauth2-provider'
+    s.version           =  Gem::Version.new(Rack::OAuth2::VERSION)
+    s.summary           = "Rack Middleware that authenticates users based on the different profiles of oAuth 2.0 standard"
+    s.description       = "A simple implementation of provider protocols of oAuth 2.0 (right now just AssertionProfile)."
+    s.email             = 'johnny.halife@me.com'
+    s.author            = 'Johnny G. Halife & Ezequiel Morito'
+    s.require_paths     = ["lib"]
+    s.files             = FileList['rakefile', 'lib/**/*.rb']
+    s.test_files        = Dir['spec/**/*']
+    s.has_rdoc          = true
+    s.rdoc_options      << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
+    
+    # Dependencies
+    s.add_dependency 'ruby-hmac'
+    s.add_dependency 'information_card'
+  end
+  
+  Rake::GemPackageTask.new(spec) do |pkg|
+    pkg.need_tar = true
+  end
+end
