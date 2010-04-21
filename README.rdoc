@@ -1,0 +1,10 @@
+=Rack::OAuth2::Provider, the next-gen oAuth Provider Middleware
+
+==Meta
+Written by Ezequiel Morito (e_eusebio14@hotmail.com) and Johnny G. Halife (johnny.halife at me dot com) 
+
+Released under the <em><b>'do the fuck you want'</b></em> license.
+
+http://github.com/johnnyhalife/rack-oauth2-provider
+
+http://rack-oauth2-provider.heroku.com
