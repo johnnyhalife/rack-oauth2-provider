@@ -11,6 +11,37 @@ anyway we will keep updating this project as we move forward implementing the st
 <b>IMPORTANT:</b> This projects works perfectly (as the server side) for the project I started back on february (github.com/johnnyhalife/rack-oauth-wrap), 
 the <i>access\_token</i> provided is what the other project expects as <i>WRAP access\_token=</i>. We will be migrating that project soon (since WRAP has been deprecated)
 
+===Limitations
+As the current version of the middleware (gem available at gemcutter.org) everything that you would expect to be limited
+is limited and more limited than you think, but you're always welcomed to contribute
+==Usage
+First of all, as usual do
+
+	[sudo] gem install rack-oauth2-provider --source http://gemcutter.org
+
+The minimal code you will see below is everything you need to put on a <i>config.ru</i> for rack<i>ing up</i> and have a relaying party that 
+takes a SAML token and gets you an oAuth 2.0 Simple Web token
+	
+	require 'sinatra'
+	require 'rack/oauth2/assertion_profile'
+	
+	# this is actually optional, but is being polite with the users
+	get "/" do
+		[405, [], "error=method_not_allowed"]
+	end
+
+	use Rack::OAuth2::AssertionProfile, {:shared_secret => base64_encoded_secret, # => base64 encoded secret shared between parties
+                                       :scope => scope, 												# => the expected audience of the recieved SAML token
+                                       :audience => relying_party, 							# => the URI of the app you will issue the token for
+                                    	 :issuer => identifier }								  # => how this RP will be identified
+
+	run Sinatra::Application
+
+Pretty simple, hu?
+
+==TODO's
+- Implement it, seriously
+
 ==Meta
 Written by Ezequiel Morito (e_eusebio14 at hotmail dot com) and Johnny G. Halife (johnny.halife at me dot com) 
 
