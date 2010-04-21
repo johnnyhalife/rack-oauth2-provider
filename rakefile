@@ -8,6 +8,11 @@ require 'lib/rack/oauth2/provider'
 
 task :default => ["run_with_rcov"]
 
+task :cleanup do 
+  `rm -rf pkg`
+  `rm -rf coverage`
+end
+
 Spec::Rake::SpecTask.new('run_with_rcov') do |t|
   t.spec_files = FileList['spec/**/*.rb'].reject{|f| f.include?('functional')}
   t.rcov = true
