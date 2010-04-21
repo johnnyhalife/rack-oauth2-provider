@@ -1,5 +1,16 @@
 =Rack::OAuth2::Provider, the next-gen oAuth Provider Middleware
 
+Very quick summary of the project: We needed something similar to what .NET Access Control does with WRAP and SWT and created this simple solution.
+
+Besides the one-liner description, Ezequiel and I have been working on establishing a baseline authentication on our applications farm, 
+it's been pretty cool tough to start implementing the new oAuth 2.0 working draft (available at github.com/theRazorBlade/draft-ietf-oauth). 
+
+We started implementing the SAML for SWT profile (AssertionProfile on the draft), with a pretty rough SAML validation (just signature, and others),
+anyway we will keep updating this project as we move forward implementing the standard.
+
+<b>IMPORTANT:</b> This projects works perfectly (as the server side) for the project I started back on february (github.com/johnnyhalife/rack-oauth-wrap), 
+the <i>access_token</i> provided works with that. We will be migrating that project soon (since WRAP has been deprecated)
+
 ==Meta
 Written by Ezequiel Morito (e_eusebio14 at hotmail dot com) and Johnny G. Halife (johnny.halife at me dot com) 
 
