@@ -8,7 +8,8 @@ it's been pretty cool tough to start implementing the new oAuth 2.0 working draf
 We started implementing the SAML for SWT profile (AssertionProfile on the draft), with a pretty rough SAML validation (just signature, and others),
 anyway we will keep updating this project as we move forward implementing the standard.
 
-<b>IMPORTANT:</b> This projects works perfectly (as the server side) for the project I started back on february (github.com/johnnyhalife/rack-oauth-wrap), 
+===Compatibility
+This projects works perfectly (as the server side) for the project I started back on february (github.com/johnnyhalife/rack-oauth-wrap), 
 the <i>access\_token</i> provided is what the other project expects as <i>WRAP access\_token=</i>. We will be migrating that project soon (since WRAP has been deprecated)
 
 ===Limitations
