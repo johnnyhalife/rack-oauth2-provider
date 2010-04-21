@@ -21,7 +21,8 @@ namespace :docs do
   	t.options << '--line-numbers' << '--inline-source' << '-A cattr_accessor=object'
   	t.options << '--charset' << 'utf-8'
   	t.rdoc_files.include('README.rdoc')
-  	t.rdoc_files.include('lib/**/*.rb')
+  	t.rdoc_files.include('lib/*.rb')
+  	t.rdoc_files.include('lib/rack/**/*.rb')
   end
 end
 
