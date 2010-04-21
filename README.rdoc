@@ -32,9 +32,9 @@ takes a SAML token and gets you an oAuth 2.0 Simple Web token
 	end
 
 	use Rack::OAuth2::AssertionProfile, {:shared_secret => base64_encoded_secret, # => base64 encoded secret shared between parties
-                                       :scope => scope, 												# => the expected audience of the recieved SAML token
-                                       :audience => relying_party,							# => the URI of the app you will issue the token for
-                                    	 :issuer => identifier }									# => how this RP will be identified
+                                       :scope => scope, # => the expected audience of the recieved SAML token
+                                       :audience => relying_party, # => the URI of the app you will issue the token for
+                                    	 :issuer => identifier } # => how this RP will be identified
 
 	run Sinatra::Application
 
